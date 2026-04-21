@@ -53,3 +53,31 @@ docker logs -f python-container
 
 ![container logs](images/containerLogs.png)
 ![container](images/container.png)
+
+## run on EC2 instance
+
+created the instance from the Ui
+
+> for the app to run as non root user I can use nginx as a reverse proxy but it require extra setup which is not part of the task
+
+> I terminated the EC2 instance to avoid credit spending, so the website at http://13.53.206.136/ is not longer accessible
+
+![EC2 create](images/ec2Create.png)
+
+![ec2](images/ec2.png)
+
+### commands to configure the app
+
+```bash
+sudo dnf install git -y
+sudo dnf install python3 python3-pip -y
+git clone https://github.com/matan77/lab3-virtualization.git
+cd lab3-virtualization/app
+sudo su
+pip install -r requirements.txt
+gunicorn -w 4 -b 0.0.0.0:5000 app:app
+```
+
+![ec2 run](images/ec2Run.png)
+
+![ec2-website](images/ec2Web.png)
