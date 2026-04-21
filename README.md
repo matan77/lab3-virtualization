@@ -38,3 +38,18 @@ gunicorn -w 4 -b 0.0.0.0:5000 app:app
 
 ![vm running](images/vmRunning.png)
 ![guest OS](images/guestOS.png)
+
+## run on Docker container
+
+```bash
+cd app
+docker build -t python-app:latest .
+docker run -d --name python-container -p 5000:5000 python-app:latest
+docker ps
+docker logs -f python-container
+```
+
+![docker ps](images/container-ps.png)
+
+![container logs](images/containerLogs.png)
+![container](images/container.png)
