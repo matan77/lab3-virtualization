@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Server Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" />
+  </head>
+
+  <body class="bg-slate-950 text-slate-100">
+    <!-- Header -->
+    <header class="p-6">
+      <h1 class="text-3xl font-semibold">Server Dashboard</h1>
+      <p class="text-slate-400 text-sm mt-1">Live system metrics</p>
+    </header>
+
+    <!-- Main content -->
+    <main class="p-6 pt-0">
+      <!-- Top metrics -->
+      <section
+        aria-label="System Metrics"
+        class="grid grid-cols-1 md:grid-cols-3 gap-6"
+      >
+        <!-- Hostname -->
+        <article class="rounded-2xl bg-slate-900 border border-slate-800 p-5">
+          <h2 class="text-slate-400 text-sm">Hostname</h2>
+          <p id="hostname" class="text-xl mt-2">-</p>
+        </article>
+
+        <!-- CPU -->
+        <article class="rounded-2xl bg-slate-900 border border-slate-800 p-5">
+          <h2 class="text-slate-400 text-sm">CPU Usage</h2>
+
+          <div class="flex flex-col items-center mt-4">
+            <svg
+              width="160"
+              height="90"
+              viewBox="0 0 140 80"
+              aria-hidden="true"
+            >
+              <path
+                d="M10 70 A60 60 0 0 1 130 70"
+                stroke="#1f2937"
+                stroke-width="12"
+                fill="none"
+              />
+              <path
+                id="cpuGauge"
+                d="M10 70 A60 60 0 0 1 130 70"
+                stroke="#3b82f6"
+                stroke-width="12"
+                fill="none"
+                stroke-linecap="round"
+                stroke-dasharray="188"
+                stroke-dashoffset="188"
+              />
+            </svg>
+
+            <p id="cpu" class="text-3xl mt-2">-</p>
+          </div>
+        </article>
+
+        <!-- RAM -->
+        <article class="rounded-2xl bg-slate-900 border border-slate-800 p-5">
+          <h2 class="text-slate-400 text-sm">RAM Usage</h2>
+
+          <div class="flex flex-col items-center mt-4">
+            <svg
+              width="160"
+              height="90"
+              viewBox="0 0 140 80"
+              aria-hidden="true"
+            >
+              <path
+                d="M10 70 A60 60 0 0 1 130 70"
+                stroke="#1f2937"
+                stroke-width="12"
+                fill="none"
+              />
+              <path
+                id="ramGauge"
+                d="M10 70 A60 60 0 0 1 130 70"
+                stroke="#22c55e"
+                stroke-width="12"
+                fill="none"
+                stroke-linecap="round"
+                stroke-dasharray="188"
+                stroke-dashoffset="188"
+              />
+            </svg>
+
+            <p id="ram" class="text-3xl mt-2">-</p>
+          </div>
+        </article>
+      </section>
+
+      <!-- Secondary metrics -->
+      <section
+        aria-label="Additional Metrics"
+        class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6"
+      >
+        <article class="rounded-2xl bg-slate-900 border border-slate-800 p-5">
+          <h2 class="text-slate-400 text-sm">Uptime</h2>
+          <p id="uptime" class="text-lg mt-2">-</p>
+        </article>
+
+        <article class="rounded-2xl bg-slate-900 border border-slate-800 p-5">
+          <h2 class="text-slate-400 text-sm">CPU Cores</h2>
+          <p id="cores" class="text-lg mt-2">-</p>
+        </article>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer
+      class="text-center absolute bottom-0 w-full text-slate-500 text-xl py-4"
+    >
+      &copy; By Matan haver
+    </footer>
+
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+  </body>
+</html>
